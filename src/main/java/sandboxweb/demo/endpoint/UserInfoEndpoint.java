@@ -2,6 +2,7 @@ package sandboxweb.demo.endpoint;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,11 @@ public class UserInfoEndpoint {
     public ResponseEntity<UserInfoResponse> userInfo2() {
         UserInfoResponse res = new UserInfoResponse(8354L, "FFG Taro", null, "mac");
         return ResponseEntity.ok(res);
+    }
+
+    @GetMapping("/userinfo3")
+    public ResponseEntity userInfo3() {
+        return new ResponseEntity(HttpStatus.NOT_MODIFIED);
     }
 
     @Value
