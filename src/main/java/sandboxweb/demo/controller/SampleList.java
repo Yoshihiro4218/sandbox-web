@@ -1,6 +1,5 @@
 package sandboxweb.demo.controller;
 
-import com.google.common.collect.*;
 import lombok.*;
 import lombok.extern.slf4j.*;
 import org.springframework.stereotype.*;
@@ -17,37 +16,52 @@ import static sandboxweb.demo.controller.SampleList.SampleData.Result.OK;
 @RequestMapping("/list")
 @Slf4j
 public class SampleList {
-    private static final Map<Integer, SampleData> sampleDataMap = ImmutableMap.of(1, SampleData.builder()
-                                                                                               .id(1)
-                                                                                               .name("堀北真希")
-                                                                                               .gender(FEMALE)
-                                                                                               .birthDate("19881006")
-                                                                                               .build(),
-                                                                                  2, SampleData.builder()
-                                                                                               .id(2)
-                                                                                               .name("木村佳乃")
-                                                                                               .gender(FEMALE)
-                                                                                               .birthDate("19760410")
-                                                                                               .build(),
-                                                                                  3, SampleData.builder()
-                                                                                               .id(3)
-                                                                                               .name("水樹奈々")
-                                                                                               .gender(FEMALE)
-                                                                                               .birthDate("19800121")
-                                                                                               .build(),
-                                                                                  4, SampleData.builder()
-                                                                                               .id(4)
-                                                                                               .name("阿部寛")
-                                                                                               .gender(MALE)
-                                                                                               .birthDate("19640622")
-                                                                                               .result(OK)
-                                                                                               .build());
+    private static final Map<Integer, SampleData> sampleDataMap = new HashMap<Integer, SampleData>() {
+        {
+            put(1, SampleData.builder()
+                             .id(1)
+                             .name("堀北真希")
+                             .gender(FEMALE)
+                             .birthDate("19881006")
+                             .build());
+            put(2, SampleData.builder()
+                             .id(2)
+                             .name("木村佳乃")
+                             .gender(FEMALE)
+                             .birthDate("19760410")
+                             .build());
+            put(3, SampleData.builder()
+                             .id(3)
+                             .name("水樹奈々")
+                             .gender(FEMALE)
+                             .birthDate("19800121")
+                             .build());
+            put(4, SampleData.builder()
+                             .id(4)
+                             .name("阿部寛")
+                             .gender(MALE)
+                             .birthDate("19640622")
+                             .result(OK)
+                             .build());
+        }
+    };
 
     @GetMapping("")
     public String index(Model model) {
         log.info("Samples={}", sampleDataMap.values());
         model.addAttribute("samples", sampleDataMap.values());
         return "list/index";
+    }
+
+    @PostMapping("")
+    public String update(@RequestParam int id,
+                         @RequestParam SampleData.Result result,
+                         Model model) {
+        log.info("ID={} ,Result={}", id, result);
+        SampleData target = sampleDataMap.get(id);
+        target.setResult(result);
+        model.addAttribute("samples", sampleDataMap.values());
+        return "redirect:/list";
     }
 
     @Data

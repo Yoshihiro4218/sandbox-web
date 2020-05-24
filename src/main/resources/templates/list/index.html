@@ -58,10 +58,20 @@
             <td th:text="${sample.gender.label}"></td>
             <td th:text="${sample.birthDate}"></td>
             <td th:text="${sample.result != null ? sample.result.label : '処理待ち'}"></td>
-            <td class="align-middle py-0"><a href="/proposalList/1016"
-                                             class="btn btn-outline-primary btn-block text-decoration-none">OK</a></td>
-            <td class="align-middle py-0"><a href="/proposalList/1016"
-                                             class="btn btn-outline-primary btn-block text-decoration-none">NG</a></td>
+            <form th:action="@{/list}" th:method="post">
+              <td class="align-middle py-0">
+                <input type="hidden" name="id" th:value="${sample.id}">
+                <input type="hidden" name="result" value="OK">
+                <button class="btn btn-outline-primary btn-block text-decoration-none" type="submit">OK</button>
+              </td>
+            </form>
+            <form th:action="@{/list}" th:method="post">
+              <td class="align-middle py-0">
+                <input type="hidden" name="id" th:value="${sample.id}">
+                <input type="hidden" name="result" value="NG">
+                <button class="btn btn-outline-primary btn-block text-decoration-none" type="submit">NG</button>
+              </td>
+            </form>
             <td class="align-middle py-0"><a href="/proposalList/1016"
                                              class="btn btn-outline-primary btn-block text-decoration-none">
               <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
