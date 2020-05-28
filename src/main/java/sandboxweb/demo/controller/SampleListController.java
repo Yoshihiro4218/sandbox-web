@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-import static sandboxweb.demo.controller.SampleList.SampleData.Gender.FEMALE;
-import static sandboxweb.demo.controller.SampleList.SampleData.Gender.MALE;
-import static sandboxweb.demo.controller.SampleList.SampleData.Result.OK;
+import static sandboxweb.demo.controller.SampleListController.SampleData.Gender.FEMALE;
+import static sandboxweb.demo.controller.SampleListController.SampleData.Gender.MALE;
+import static sandboxweb.demo.controller.SampleListController.SampleData.Result.OK;
 
 @Controller
 @RequestMapping("/list")
 @Slf4j
-public class SampleList {
+public class SampleListController {
     private static final Map<Integer, SampleData> sampleDataMap = new HashMap<Integer, SampleData>() {
         {
             put(1, SampleData.builder()

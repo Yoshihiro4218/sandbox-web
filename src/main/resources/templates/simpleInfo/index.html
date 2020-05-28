@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>シンプル情報画面</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link media="all" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="card text-center col-8 p-0">
+      <div class="card-header">
+        ID: 777
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">情報</h5>
+        <p class="card-text text-danger">GGGGGGGGGG</p>
+        <a th:href="@{/simple-info}" class="btn btn-primary">リロード</a>
+      </div>
+      <div class="card-footer">
+        <table class="table table-bordered">
+          <thead>
+          <tr class="text-left">
+            <th scope="col">項目</th>
+            <th scope="col">説明</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="text-left">
+            <td>あああああ</td>
+            <td>あいうえお</td>
+          </tr>
+          <tr class="text-left">
+            <td>かかかかか</td>
+            <td>かきくけこ</td>
+          </tr>
+          <tr class="text-left">
+            <td>さささささ</td>
+            <td>さしすせそ</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
